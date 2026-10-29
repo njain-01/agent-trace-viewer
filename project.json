@@ -1,0 +1,8 @@
+{
+  "name": "agent-trace-viewer",
+  "description": "Record tool-calling agent runs as JSONL traces and render them as a self-contained HTML timeline.",
+  "stack": "Python",
+  "build": "python3 -m compileall -q src",
+  "test": "PYTHONPATH=src python3 -m unittest discover -s tests",
+  "topics": ["python", "ai-agents", "observability", "tracing", "llm", "developer-tools"]
+}
