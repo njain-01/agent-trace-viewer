@@ -1,0 +1,21 @@
+{"data": {"task": "Check billing-api and summarise retry guidance"}, "ev": "start", "id": 1, "kind": "run", "name": "mock-agent", "parent": null, "ts": 0.0, "v": 1}
+{"data": {"messages": 1}, "ev": "start", "id": 2, "kind": "llm", "name": "mock-model", "parent": 1, "ts": 0.0, "v": 1}
+{"data": {"action": "tool", "detail": "search_docs"}, "ev": "end", "id": 2, "ts": 0.8, "v": 1}
+{"data": {"query": "retry timeout guidance"}, "ev": "start", "id": 3, "kind": "tool", "name": "search_docs", "parent": 1, "ts": 0.8, "v": 1}
+{"data": "Retries with exponential backoff should add jitter to avoid thundering herds. Every outbound call needs a deadline; propagate it down the call chain.", "ev": "end", "id": 3, "ts": 1.15, "v": 1}
+{"data": {"messages": 1}, "ev": "start", "id": 4, "kind": "llm", "name": "mock-model", "parent": 1, "ts": 1.15, "v": 1}
+{"data": {"action": "tool", "detail": "fetch_status"}, "ev": "end", "id": 4, "ts": 1.75, "v": 1}
+{"data": {"service": "billing-api"}, "ev": "start", "id": 5, "kind": "tool", "name": "fetch_status", "parent": 1, "ts": 1.75, "v": 1}
+{"data": null, "error": "TimeoutError: billing-api did not respond within 1.2s", "ev": "end", "id": 5, "ts": 2.95, "v": 1}
+{"data": {"messages": 1}, "ev": "start", "id": 6, "kind": "llm", "name": "mock-model", "parent": 1, "ts": 2.95, "v": 1}
+{"data": {"action": "tool", "detail": "fetch_status"}, "ev": "end", "id": 6, "ts": 3.45, "v": 1}
+{"data": {"service": "billing-api"}, "ev": "start", "id": 7, "kind": "tool", "name": "fetch_status", "parent": 1, "ts": 3.45, "v": 1}
+{"data": "billing-api: healthy", "ev": "end", "id": 7, "ts": 5.05, "v": 1}
+{"data": {"messages": 1}, "ev": "start", "id": 8, "kind": "llm", "name": "mock-model", "parent": 1, "ts": 5.05, "v": 1}
+{"data": {"action": "tool", "detail": "calculate"}, "ev": "end", "id": 8, "ts": 5.45, "v": 1}
+{"data": {"expression": "3 * (2 ** 4) + 1"}, "ev": "start", "id": 9, "kind": "tool", "name": "calculate", "parent": 1, "ts": 5.45, "v": 1}
+{"data": 49, "ev": "end", "id": 9, "ts": 5.46, "v": 1}
+{"data": {"messages": 1}, "ev": "start", "id": 10, "kind": "llm", "name": "mock-model", "parent": 1, "ts": 5.46, "v": 1}
+{"data": {"action": "final", "detail": null}, "ev": "end", "id": 10, "ts": 6.56, "v": 1}
+{"data": {"text": "Add jitter to retries, set deadlines on calls; billing-api is healthy; budget is 49."}, "ev": "point", "id": 11, "kind": "event", "name": "final-answer", "parent": 1, "ts": 6.56, "v": 1}
+{"data": {"answer": "Add jitter to retries, set deadlines on calls; billing-api is healthy; budget is 49."}, "ev": "end", "id": 1, "ts": 6.56, "v": 1}
